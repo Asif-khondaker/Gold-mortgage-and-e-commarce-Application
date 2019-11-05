@@ -1,0 +1,118 @@
+﻿@model GoldMortgageApp.Models.MortgageItem
+
+@{
+    ViewBag.Title = "Details";
+}
+
+  
+<Center>
+<u><h4>Mortgage Item</h4></u>
+<div>
+  
+    <hr />
+    <dl class="dl-horizontal">
+       <center>
+	    <dt>
+            @Html.DisplayName("Customer Full Name")
+        </dt>
+		</center>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.FullName)
+        </dd>
+         <hr/>
+        <dt>
+            @Html.DisplayNameFor(model => model.IssueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IssueDate)
+        </dd>
+		<hr/>
+        <dt>
+            @Html.DisplayNameFor(model => model.MortgageItemD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MortgageItemD)
+        </dd>
+		<hr/>
+        
+
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemQuantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemQuantity)
+        </dd>
+		<hr/>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+		<hr/>
+        <dt>
+            @Html.DisplayNameFor(model => model.Loan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Loan)
+        </dd>
+			<hr/>
+        <dt>
+            @Html.DisplayNameFor(model => model.InterestRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InterestRate)
+        </dd>
+			<hr/>
+        <dt>
+            @Html.DisplayNameFor(model => model.InterestRatePerMonth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InterestRatePerMonth)
+        </dd>
+		<hr/>
+        <dt>
+            @Html.DisplayNameFor(model => model.MaturityOfThisLoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaturityOfThisLoan)
+        </dd>
+		<hr/>
+       <dt>
+            @Html.DisplayName("Uploaded File ")
+        </dt>
+
+        <dd>
+           <a href="~/Image/@Model.File" >
+                <img src="~/Image/@Model.File" alt="Click" width="150" height="150">
+            </a>
+        </dd>
+		<hr/>
+		<dt>
+            @Html.DisplayName("")
+        </dt>
+
+        <dd>
+           
+				<u><h4>@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) </h4></u>
+    
+		   
+        </dd>
+
+        
+
+    </dl>
+</div>
+
+</Center>

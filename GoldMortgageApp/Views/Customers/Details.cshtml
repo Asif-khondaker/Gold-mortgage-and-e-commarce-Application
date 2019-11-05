@@ -1,0 +1,119 @@
+﻿@model GoldMortgageApp.Models.Customer
+
+@{
+    ViewBag.Title = "Customer Details";
+}
+
+<div>
+    <u><h4>Customer Profile</h4></u>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Full Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Mobile No")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MobileNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("User Id")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "CustomerList")
+</p>
+<br>
+ <u><h4>Mortgage Item List</h4></u>
+<hr\>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayName("Issue Date")
+        </th>
+        <th>
+            @Html.DisplayName("Mortgage Item(Description)")
+        </th>
+       
+        <th>
+            @Html.DisplayName("Item Quantity")
+        </th>
+        <th>
+            @Html.DisplayName("Price")
+        </th>
+        <th>
+            @Html.DisplayName("Loan")
+        </th>
+		<th>
+            @Html.DisplayName("Maturity Of This Loan")
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in @ViewBag.MortgageItem) {
+    <tr>
+        
+        <td>
+            @item.IssueDate
+        </td>
+        <td>
+           @item.MortgageItemD
+        </td>
+        <td>
+            @item.ItemQuantity
+        </td>
+        <td>
+            @item.Price
+        </td>
+        <td>
+            @item.Loan
+        </td>
+        
+        <td>
+            @item.MaturityOfThisLoan
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit","MortgageItems", new { id=item.Id },null) |
+            @Html.ActionLink("Details", "Details","MortgageItems", new { id=item.Id },null) |
+            @Html.ActionLink("Delete", "Delete","MortgageItems", new { id=item.Id },null))
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,71 @@
+﻿@model GoldMortgageApp.Models.Withdraw
+@{
+    ViewBag.Title = "Transaction Succesfull Message";
+}
+<div>
+    <h4>Transaction Information</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Account Holder Name")
+        </dt>
+
+        <dd>
+            @ViewBag.Name 
+        </dd>
+        <dt>
+            @Html.DisplayName("Card Number")
+        </dt>
+
+        <dd>
+            @ViewBag.Account
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Payment Id")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepositeId)
+        </dd>
+        <dt>
+            @Html.DisplayName("Transaction Status")
+        </dt>
+
+        <dd>
+            @Html.DisplayName("Succesfull!")
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Transection Id")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransectionId)
+        </dd>
+
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <h2>Please take A screenshot of this page!</h2>
+    @Html.ActionLink("Back", "Login", "Home")
+</p>
+

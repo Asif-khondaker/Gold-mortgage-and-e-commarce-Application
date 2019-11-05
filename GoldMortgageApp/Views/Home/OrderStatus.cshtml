@@ -1,0 +1,98 @@
+﻿@model IEnumerable<GoldMortgageApp.Models.ViewCart>
+
+<br />
+<br />
+<div style="color:darkblue">
+    <h4 >Total Payable: @ViewBag.TotalPayable tk.(Including Shipping Cost)</h4>
+    <h4>Shipping Cost:  @ViewBag.ShippingCost</h4>
+    <h4>Payment Status: @ViewBag.PaymentStatus </h4>
+</div>
+
+
+<hr />
+<h3>Your Shopping Cart</h3>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayName("Product Image")
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Available)
+        </th>
+
+       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+
+            <td>
+                <a href="~/Image/@item.ProductFile">
+                    <img src="~/Image/@item.ProductFile" alt="Click" width="150" height="150">
+                </a>
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Available)
+            </td>
+          
+        </tr>
+    }
+
+</table>
+<br />
+@if(@ViewBag.PaymentStatus=="Not Ok")
+{   
+    <div>
+    <h3>@Html.ActionLink("Card Payment", "Transaction", "BankAccounts", new { PaymentId = @ViewBag.PaymentId },null)</h3>
+</div>
+}
+
+

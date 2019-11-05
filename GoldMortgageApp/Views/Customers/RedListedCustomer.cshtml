@@ -1,0 +1,70 @@
+﻿@model IEnumerable<GoldMortgageApp.Models.MortgageItem>
+
+@{
+    ViewBag.Title = "RedListedCustomer";
+}
+
+<h2>Red Listed Customer</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Customer Name")
+        </th>
+        <th>
+            @Html.DisplayName("Mobile No")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IssueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MortgageItemD)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.ItemQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Loan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaturityOfThisLoan)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.MobileNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IssueDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MortgageItemD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemQuantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Loan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaturityOfThisLoan)
+        </td>
+        
+    </tr>
+}
+
+</table>

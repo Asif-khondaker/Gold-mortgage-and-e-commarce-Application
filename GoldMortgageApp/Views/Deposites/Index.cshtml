@@ -1,0 +1,107 @@
+﻿@model IEnumerable<GoldMortgageApp.Models.Deposite>
+
+@{
+    ViewBag.Title = "Search_Deposite";
+}
+
+<h2>Search Deposite</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    
+
+        <div class="form-group">
+            @Html.Label("From", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" name="From" class="form-control"/>
+               
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("To", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" name="To" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
+
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+<h2>Deposite List</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepositeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransectionId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepositeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransectionId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        @if(item.Id!=0)
+        {   
+            
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+        }
+        else
+        {   
+            <td></td><td></td>
+        }
+    </tr>
+}
+
+</table>

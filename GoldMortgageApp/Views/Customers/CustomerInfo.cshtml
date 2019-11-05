@@ -1,0 +1,174 @@
+﻿@model IEnumerable<GoldMortgageApp.Models.Customer>
+
+@{
+    ViewBag.Title = "Customer Info";
+}
+
+
+<br>
+@if (Session["Admin"] != null )
+
+	{
+using (Html.BeginForm()) 
+{
+
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+	<h3>Search Customer</h3>
+        <hr />
+		
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+       
+   
+        <div class="form-group">
+            @Html.Label("Mobile No/User Id", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+			<input Type="Text" name="mobileOrUserId" class="form-control" />
+                
+            </div>
+        </div>
+
+       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+	
+}
+
+}
+
+<hr />
+
+<br>
+<h3>Customer Info</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNo)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    if (@Session["Admin"] != null )
+
+	{
+	<tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MobileNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        
+        <td>
+		
+		 @Html.ActionLink("Add Payout", "Payout","Customers",new { Due=@ViewBag.Due, Id=@ViewBag.Id },null) |
+	     @Html.ActionLink("Add Morgage Item", "Create","MortgageItems",new { Id=item.Id },null) |
+		 @Html.ActionLink("Add Installment", "Create","Deposites",new { Id=item.Id },null) |
+         @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+         @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+		 @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+		 
+    </tr>
+	}
+	else
+	{
+		<tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MobileNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        
+        <td>
+		
+		
+        </td>
+		 
+		</tr>
+	}
+}
+
+</table>
+<br>
+<h3>Mortgage Information</h3>
+@if( @ViewBag.VewFinance!=null)
+{
+		<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Serial")
+        </th>
+        <th>
+            @Html.DisplayName("Description")
+        </th>
+		<th>
+            @Html.DisplayName("Loan")
+        </th>
+		<th>
+            @Html.DisplayName("Interest")
+        </th>
+		<th>
+            @Html.DisplayName("Deposite")
+        </th>
+		<th>
+            @Html.DisplayName("Due")
+        </th>
+        
+    </tr>
+
+@foreach (var FinanceInfo in @ViewBag.VewFinance) {
+    <tr>
+        <td>
+          @FinanceInfo.Serial
+        </td>
+		<td>
+         @FinanceInfo.Description
+        </td>
+		<td>
+            @FinanceInfo.Loan
+        </td>
+		<td>
+         @FinanceInfo.Interest
+        </td>
+		<td>
+           @FinanceInfo.Deposite
+        </td>
+		<td>
+            @FinanceInfo.Due
+        </td>
+        
+    </tr>
+}
+
+</table>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+	 <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
